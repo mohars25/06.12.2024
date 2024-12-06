@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prendre un Rendez-vous</title>
+  <%= stylesheet_link_tag 'application', media: 'all' %>
+</head>
+<body>
+  <div class="container">
+    <h1>Bienvenue sur le site de prise de rendez-vous</h1>
+    
+    <div class="appointment-form">
+      <h2>Prendre un rendez-vous</h2>
+
+      <%= form_with model: @appointment, url: appointments_path, local: true do |form| %>
+        <% if @appointment.errors.any? %>
+          <div class="errors">
+            <h2>Erreur(s) :</h2>
+            <ul>
+              <% @appointment.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+        <div class="input-group">
+          <%= form.label :doctor_id, "Choisissez un Docteur" %>
+          <%= form.collection_select :doctor_id, Doctor.all, :id, :full_name, prompt: "Sélectionnez un docteur" %>
+        </div>
+
+        <div class="input-group">
+          <%= form.label :date, "Date et Heure" %>
+          <%= form.datetime_local_field :date %>
+        </div>
+
+        <div class="form-submit">
+          <%= form.submit "Prendre Rendez-vous" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</body>
+</html>

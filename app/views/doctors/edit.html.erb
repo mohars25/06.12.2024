@@ -1,0 +1,42 @@
+<!-- app/views/doctors/edit.html.erb -->
+
+<h1>Modifier le docteur : <%= @doctor.first_name %> <%= @doctor.last_name %></h1>
+
+<%= form_with(model: @doctor, local: true) do |form| %>
+  <% if @doctor.errors.any? %>
+    <div>
+      <h2>Erreur(s) :</h2>
+      <ul>
+        <% @doctor.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :first_name %>
+    <%= form.text_field :first_name %>
+  </div>
+
+  <div>
+    <%= form.label :last_name %>
+    <%= form.text_field :last_name %>
+  </div>
+
+  <div>
+    <%= form.label :zip_code %>
+    <%= form.text_field :zip_code %>
+  </div>
+
+  <div>
+    <%= form.label :city_id, "Ville" %>
+    <%= form.collection_select :city_id, City.all, :id, :name, prompt: "Sélectionner une ville" %>
+  </div>
+
+  <div>
+    <%= form.submit "Mettre à jour" %>
+  </div>
+<% end %>
+
+<%= link_to 'Retour à la liste', doctors_path %>

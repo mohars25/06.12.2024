@@ -1,0 +1,9 @@
+<h1>Liste des rendez-vous</h1>
+
+<ul>
+  <% @appointments.each do |appointment| %>
+    <li>
+      <%= link_to "Rendez-vous avec #{appointment.doctor.full_name} - #{appointment.date}", appointment_path(appointment) %>
+    </li>
+  <% end %>
+</ul>

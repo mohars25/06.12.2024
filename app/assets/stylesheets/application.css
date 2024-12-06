@@ -1,0 +1,109 @@
+/* application.css */
+
+/* Réinitialisation basique */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Mise en page de base */
+  body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(to right, #4e73df, #1e3d58);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+  }
+  
+  .container {
+    width: 100%;
+    max-width: 600px;
+    padding: 30px;
+    border-radius: 15px;
+    background: rgba(0, 0, 0, 0.6);
+  }
+  
+  h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #f1f1f1;
+  }
+  
+  h2 {
+    margin-bottom: 20px;
+    color: #f7a700;
+  }
+  
+  /* Formulaire */
+  .appointment-form {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+  }
+  
+  .input-group {
+    margin-bottom: 15px;
+  }
+  
+  .input-group label {
+    font-size: 1.1em;
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .input-group select, .input-group input[type="datetime-local"] {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+  }
+  
+  .form-submit {
+    margin-top: 20px;
+  }
+  
+  input[type="submit"] {
+    background-color: #f7a700;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.2em;
+    transition: background-color 0.3s ease;
+  }
+  
+  /* Effet hover pour le bouton */
+  input[type="submit"]:hover {
+    background-color: #e69700;
+  }
+  
+  /* Erreurs de validation */
+  .errors {
+    background-color: #ff4e50;
+    color: white;
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+  }
+  
+  .errors ul {
+    list-style-type: none;
+  }
+  
+  .errors li {
+    font-size: 1.1em;
+  }
+  
+  /* Animation et effet sur les champs du formulaire */
+  .input-group input:focus, .input-group select:focus {
+    outline: none;
+    box-shadow: 0 0 5px 2px rgba(247, 167, 0, 0.6);
+    border-color: #f7a700;
+  }
+  

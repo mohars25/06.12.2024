@@ -1,0 +1,33 @@
+<h2>Prendre un rendez-vous</h2>
+
+<%= form_with model: @appointment, url: appointments_path, local: true do |form| %>
+  <% if @appointment.errors.any? %>
+    <div>
+      <h3>Erreur(s) :</h3>
+      <ul>
+        <% @appointment.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :date, "Date du rendez-vous" %>
+    <%= form.datetime_local :date, required: true %>
+  </div>
+
+  <div>
+    <%= form.label :doctor_id, "Médecin" %>
+    <%= form.collection_select :doctor_id, Doctor.all, :id, :full_name, prompt: "Sélectionnez un médecin", required: true %>
+  </div>
+
+  <div>
+    <%= form.label :patient_id, "Patient" %>
+    <%= form.collection_select :patient_id, Patient.all, :id, :full_name, prompt: "Sélectionnez un patient", required: true %>
+  </div>
+
+  <div>
+    <%= form.submit "Prendre le rendez-vous" %>
+  </div>
+<% end %>

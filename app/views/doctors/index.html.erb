@@ -1,0 +1,32 @@
+<!-- app/views/doctors/index.html.erb -->
+
+<h1>Liste des docteurs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Prénom</th>
+      <th>Nom</th>
+      <th>Code Postal</th>
+      <th>Ville</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @doctors.each do |doctor| %>
+      <tr>
+        <td><%= doctor.first_name %></td>
+        <td><%= doctor.last_name %></td>
+        <td><%= doctor.zip_code %></td>
+        <td><%= doctor.city.name if doctor.city %></td>
+        <td>
+          <%= link_to 'Voir', doctor_path(doctor) %> |
+          <%= link_to 'Modifier', edit_doctor_path(doctor) %> |
+          <%= link_to 'Supprimer', doctor_path(doctor), method: :delete, data: { confirm: 'Êtes-vous sûr ?' } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Ajouter un docteur', new_doctor_path %>

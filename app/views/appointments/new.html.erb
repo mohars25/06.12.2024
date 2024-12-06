@@ -1,0 +1,38 @@
+<h1>Prendre un rendez-vous</h1>
+
+<%= form_with model: @appointment, local: true do |form| %>
+  <% if @appointment.errors.any? %>
+    <div>
+      <h2>Erreur(s) :</h2>
+      <ul>
+        <% @appointment.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :doctor_id %>
+    <%= form.collection_select :doctor_id, Doctor.all, :id, :full_name %>
+  </div>
+
+  <div>
+    <%= form.label :patient_id %>
+    <%= form.collection_select :patient_id, Patient.all, :id, :full_name %>
+  </div>
+
+  <div>
+    <%= form.label :date %>
+    <%= form.datetime_select :date %>
+  </div>
+
+  <div>
+    <%= form.label :city_id %>
+    <%= form.collection_select :city_id, City.all, :id, :name %>
+  </div>
+
+  <div>
+    <%= form.submit "Prendre le rendez-vous" %>
+  </div>
+<% end %>
